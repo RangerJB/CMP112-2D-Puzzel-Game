@@ -9,9 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
-    //Audio Variables
-    private AudioSource source;
-    public AudioClip JumpSound;
 
     void Start()
     {
@@ -24,32 +21,16 @@ public class PlayerMovement : MonoBehaviour
         float moveInput = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-       
-        
-        
-        
+
+
+
+
         // Jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-           
-        }
-
-        void Start()
-        {
-
-            source = GetComponent<AudioSource>();
 
         }
-
-        void Update()
-        {
-            if (moveInput.GetKeyDown(KeyCode.Space))
-            {
-                source.Play(JumpSound);
-            }
-        }
-  
 
 
     }
