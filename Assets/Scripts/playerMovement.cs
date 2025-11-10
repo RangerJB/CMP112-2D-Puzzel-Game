@@ -10,8 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
-    // player health 
-    public PlayerHealth PH;
 
     void Start()
     {
@@ -43,10 +41,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             }
         }
-        if (PH.health == 0)
-        {
-            Destroy(gameObject);
-        }
+
 
     }
 
@@ -61,11 +56,5 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = false;
     }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Death"))
-        {
-            Destroy(gameObject);
-        }
-    }
+
 }
