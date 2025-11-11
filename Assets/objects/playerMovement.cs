@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -12,12 +13,14 @@ public class PlayerMovement : MonoBehaviour
 
     // player health 
     public PlayerHealth PH;
+    public Vector2 StartPos;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        StartPos = transform.position;
     }
-
+    
     void Update()
     {
         // Left anad right movement
@@ -45,7 +48,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (PH.health == 0)
         {
-            Destroy(gameObject);
+            transform.position = StartPos;
+            PH.health = 1;
         }
 
     }
@@ -65,7 +69,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Death"))
         {
-            Destroy(gameObject);
+            transform.position = StartPos;
+            PH.health--;
+        }
+        if (collision.gameObject.CompareTag("TheSun"))
+        {
+            SceneManager.LoadSceneAsync(3);
+        }
+        if (collision.gameObject.CompareTag("TheSun2"))
+        {
+            SceneManager.LoadSceneAsync(0);
         }
     }
+    
 }

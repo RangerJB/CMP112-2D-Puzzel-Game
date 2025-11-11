@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - player
+  - Death
+  - TheSun
+  - TheSun2
   layers:
   - Default
   - TransparentFX
