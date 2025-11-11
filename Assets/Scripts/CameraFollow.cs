@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class CameraFollow
+public class CameraFollow: MonoBehaviour
+    
 {
     private Vector3 offset;
     private float damping;
